@@ -4,13 +4,14 @@ Implementation for basic datastructure and algorithm
 
 #### Quick Sort
 
-Time Complexity O(nlog(n)), Space O(n)
+Time Complexity O(nlog(n))-Bestcase | O(n^2), Space: no need for extra space when swap is used
 1. partition by pivot (choose the last element) (elements are sorted)
 2. quicksort(left_part)
 3. quicksort(right_part)
 
 
 #### Merge Sort
+Time Complexity O(nlog(n)), Space O(n)
 1. divide array into two halves
 2. mergesort(left_part)
 3. mergesort(right_part)
