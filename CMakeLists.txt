@@ -1,4 +1,20 @@
 cmake_minimum_required(VERSION 3.1)
 project(algorithm)
 
-add_executable(main sort.cpp)
+
+# find_package(Boost COMPONENTS system filesystem REQUIRED)
+find_package(Boost)
+if(Boost_FOUND)
+message("-- Boost_LIB ${Boost_LIBRARIES}")
+endif()
+
+# add_executable(main sort.cpp)
+
+# add_executable(main graph.cpp)
+# target_link_libraries(main ${Boost_LIBRARIES})
+
+# add_executable(main dfs_con_comp.cpp)
+# add_executable(main bfs_con_comp.cpp)
+add_executable(main bfs_shortest_path.cpp)
+
+
