@@ -15,6 +15,12 @@ endif()
 
 # add_executable(main dfs_con_comp.cpp)
 # add_executable(main bfs_con_comp.cpp)
-add_executable(main bfs_shortest_path.cpp)
+# add_executable(main bfs_shortest_path.cpp)
+# add_executable(main skel.cpp)
+
+# add_executable(main in_triag.cpp)
+
+add_executable(main mst_kruskal.cpp)
+
 
 
