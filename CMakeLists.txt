@@ -20,8 +20,9 @@ endif()
 
 # add_executable(main in_triag.cpp)
 
-# add_executable(main mst_kruskal.cpp)
-add_executable(main dp_longest_path.cpp)
+# add_executable(main mst_kruskal.cpp) #chp11.2
+# add_executable(main dp_longest_path.cpp) #ch9.2
+add_executable(main dp_coin.cpp) #ch9.2
 
 
 
