@@ -1,6 +1,7 @@
 // https://blog.csdn.net/ccnuacmhdu/article/details/81133637
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 struct Rect

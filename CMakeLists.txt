@@ -22,7 +22,10 @@ endif()
 
 # add_executable(main mst_kruskal.cpp)
 # add_executable(main dp_longest_path.cpp)
+# add_executable(main dp_coin.cpp) #ch9.2
 add_executable(main gauss_eliminate.cpp)
+
+
 
 
 
