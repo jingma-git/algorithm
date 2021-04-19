@@ -22,7 +22,10 @@ endif()
 
 # add_executable(main mst_kruskal.cpp) #chp11.2
 # add_executable(main dp_longest_path.cpp) #ch9.2
-add_executable(main dp_coin.cpp) #ch9.2
+# add_executable(main dp_coin.cpp) #ch9.2
+
+# add_executable(main linked_list/sll.c)
+add_executable(main linked_list/dll.c)
 
 
 
