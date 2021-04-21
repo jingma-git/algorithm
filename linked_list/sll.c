@@ -29,6 +29,64 @@ void sll_insert(Node **linkp, int val)
     *linkp = new;        // glue 'new' to previous smaller element
 }
 
+int sll_remove(Node **rootp, Node *node)
+{
+    Node *cur = *rootp;
+    if (node == cur && cur->link == NULL)
+        *rootp = NULL;
+
+    Node *prev = NULL;
+    Node *next = NULL;
+    while (cur)
+    {
+        next = cur->link;
+        if (cur == node)
+        {
+            if (prev == NULL) // remove from head
+            {
+                *rootp = next;
+            }
+            else if (next == NULL) // remove from end
+            {
+                prev->link = NULL;
+            }
+            else // remove from middle
+            {
+                prev->link = next;
+            }
+            free(cur);
+            return 1;
+        }
+        prev = cur;
+        cur = cur->link;
+    }
+    return 0;
+}
+
+Node *sll_reverse(Node *first)
+{
+    if (first == NULL)
+        return NULL;
+    if (first->link == NULL)
+        return first;
+
+    Node *prev, *cur;
+    prev = first;
+    cur = first->link;
+    first->link = NULL;
+    while (1)
+    {
+        Node *next = cur->link;
+
+        cur->link = prev;
+        if (next == NULL)
+            break;
+        prev = cur;
+        cur = next;
+    }
+    return cur;
+}
+
 void sll_free(Node *root)
 {
     if (root == NULL)
@@ -80,6 +138,15 @@ int main()
     sll_insert(&n0, 20);
     sll_print(n0);
 
+    printf("reverse\n");
+    n0 = sll_reverse(n0);
+    sll_print(n0);
+
+    printf("remove\n");
+    sll_remove(&n0, n2);
+    sll_print(n0);
+    sll_remove(&n0, n0);
+    sll_print(n0);
     sll_free(n0);
     return 0;
 }

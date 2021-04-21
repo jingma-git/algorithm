@@ -90,6 +90,61 @@ void dll_free(Node *rootp)
     }
 }
 
+int dll_remove(Node *rootp, Node *node)
+{
+    Node *cur, *prev = NULL, *next = NULL;
+    cur = rootp->fwd;
+    if (node == cur && cur->fwd == NULL)
+    {
+        free(node);
+        rootp->fwd = NULL;
+        rootp->bwd = NULL;
+        return 1;
+    }
+
+    while (1)
+    {
+        next = cur->fwd;
+        if (cur == node)
+        {
+            if (prev == NULL) // remove from head
+            {
+                rootp->fwd = next;
+                next->bwd = NULL;
+                free(node);
+            }
+            else if (next == NULL) //remove from end
+            {
+                prev->fwd = NULL;
+                rootp->bwd = prev;
+                free(node);
+            }
+            else // remove from middle
+            {
+                prev->fwd = next;
+                next->bwd = prev;
+                free(node);
+            }
+
+            return 1;
+        }
+        prev = cur;
+        cur = cur->fwd;
+    }
+
+    return 0;
+}
+
+Node *dll_search(Node *rootp, int val)
+{
+    Node *cur = rootp->fwd;
+    while (cur)
+    {
+        if (cur->val == val)
+            return cur;
+        cur = cur->fwd;
+    }
+}
 void test_dll_rootp()
 {
     Node *root = (Node *)malloc(sizeof(Node));
@@ -107,6 +162,19 @@ void test_dll_rootp()
 
     printf("insert into middle\n");
     dll_insert(root, 10);
+    dll_print(root);
+
+    Node *head = root->fwd;
+    Node *tail = root->bwd;
+    Node *mid = dll_search(root, 10);
+    dll_remove(root, mid);
+    printf("remove from mid\n");
+    dll_print(root);
+    dll_remove(root, head);
+    printf("remove from head\n");
+    dll_print(root);
+    dll_remove(root, tail);
+    printf("remove from tail\n");
     dll_print(root);
 }
 
@@ -190,7 +258,7 @@ void test_dll_doublep()
 
 int main()
 {
-    // test_dll_rootp();
-    test_dll_doublep();
+    test_dll_rootp();
+    // test_dll_doublep();
     return 0;
 }
